@@ -1,0 +1,28 @@
+@import 'import'
+
+@mixin red
+  background: #AB423F url(circles.png)
+  +box-shadow(rgba(0, 0, 0, 0.15) 0 -3px 3px 0 inset)
+  &, a
+    color: #DABFBE
+
+#cboxLoadedContent
+  border: 1px solid #ccc
+  +box-shadow(rgba(0, 0, 0, 0.15) 0 -3px 3px 0  inset)
+#cboxContent
+  h1
+    @include red
+    font-size: 1.2em
+    margin: 0 0 0.5em 0
+    padding: 0.2em 0.5em
+
+#cboxLoadingGraphic
+  background: none
+  display: none
+
+#new_site, #edit_site
+  width: 550px
+
+#cboxLoadingOverlay
+  background: none
+

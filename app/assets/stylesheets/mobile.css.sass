@@ -1,0 +1,65 @@
+@import "import"
+
+body
+  margin: 0
+  padding: 0
+  font-size: 16px
+  line-height: 1.6
+
+
+a, input, select
+  font-size: inherit
+  color: inherit
+  line-height: inherit
+  text-decoration: none
+  color: #140052
+
+table
+  border-collpase: collpase
+  border-spacing: 0
+  border-right: 1px solid #ccc
+  border-bottom: 1px solid #ccc
+td, th
+  padding: 2px 5px
+  border-left: 1px solid #ccc
+  border-top: 1px solid #ccc
+th
+  text-align: center
+
+h2
+  font-size: 1.2em
+
+input, select
+  padding: 0.2em 0.5em
+
+
+.row
+  margin-bottom: 1em
+
+#header
+  padding: 0.2em 1em
+  +contrasted(#ccc)
+  line-height: 1
+  #logo, #tags_bar, #nav, #nav li
+    display: inline-block
+  #logo
+    margin-right: 1em
+    font-size: 30px
+
+.tag
+  display: inline-block
+  margin: 3px 1px 3px 0
+
+
+#middle
+  padding: 0.5em 1em
+  .nav, .list, .note
+    padding: 0.3em 0.5em
+  .list
+    border-bottom: 1px solid #ccc
+  ol, ul
+    margin: 1.5em
+.footer
+  text-align: right
+  font-size: 0.8em
+

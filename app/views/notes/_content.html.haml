@@ -1,0 +1,18 @@
+.toolbar
+  = link_to '#', post_comments_path(note), :class => 'open_comments icon icons_comments', :title => '留言板'
+  = link_to '#', edit_tag_note_path(@tag, note), :class => 'edit icon icons_edit', :title => '全編輯器'
+  = link_to "#", note_path(note), :class => 'icon icons_preview', :target => '_blank', :title => '預覽'
+  = link_to '#', '#', :class => 'subject_background icon icons_bgcolor', :title => '設定標題底色' if @tag.float && !note.nnote
+  = link_to '#', '#', :class => 'background_picker body_background  icon icons_bgcolor', :title => '設定貼紙底色' if !note.nnote
+  = link_to '#', '#', :class => 'undo icon icons_undo', :title => '備存版本'
+  = link_to '#', '#', :class => 'config icon icons_config', :title => '設定'
+.option
+  .content
+  .footer
+    = link_to '', '#', :class => 'close_30 icon icons_close'
+.subject{:style => "background: #{note.subject_background}"}
+  = raw note.subject
+.body{:style => "background: #{note.body_background}"}
+  = raw auto_link(note.body, :sanitize => false)
+.comments
+

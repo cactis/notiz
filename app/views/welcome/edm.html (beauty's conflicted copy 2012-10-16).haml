@@ -1,0 +1,54 @@
+%style
+  @import url(http://fonts.googleapis.com/css?family=Andika|Julee|Pinyon+Script|Meddon|Convergence);
+  #w, #c, table{border:1px solid #ccc}
+  #w, #c, table{border:none}
+
+%div{:style => 'width: 820px; margin: 0 auto'}
+  %hr{:style => 'margin: 30px 0; background: #ccc; color: #ccc'}
+  %table{:style => 'width: 70px; margin: 0 auto;'}
+    %tr
+      %td{:style => 'font-size:30px; line-height:1; font-family:Andika; padding-left:20px'}
+        A chirpy birthday
+      %td{:style => 'vertical-align:bottom; font-size:12px; padding-left:280px; line-height:1; text-align:right; color: #ccc'}
+        = link_to "看更多生日卡", '#'
+        = link_to "與好友分享喜悅", '#', :style => 'margin-left: 10px; background:url(http://cactis.airfont.com/assets/images/filenames/1774/original/ico-facebook-small.gif) no-repeat; padding-left: 16px'
+
+  %div{:style => 'width: 820px; margin: 0 auto; padding: 10px;'}
+    %table{:style => 'margin: 10px 0 0 10px; width: 738px; height: 360px', :background => 'http://cactis.airfont.com/assets/images/filenames/1773/original/bg-slide-box.gif'}
+      %tr
+        %td{:style => 'padding: 0; verticel-align:center; text-align:center; width: 474px; height: 316px; text-align: center; vertical-align: center'}
+          = link_to image_tag("http://cactis.airfont.com/assets/images/filenames/1772/original/img-22.jpg"), '#'
+        %td{:style => 'padding: 10px 0 0 10px; font-size: 13.5px;'}
+          %div
+            %span{:style => "font-size:50px; font-family: 'Pinyon Script', Julee"}
+              Dear
+            %span
+              楊先生,
+          %div{:style => 'padding:20px 10px 20px 80px; line-height:1.6'}
+            在這個特別的日子
+            %br
+            我願以這張生日卡
+            %br
+            獻上最真誠的祝福
+            %br
+            也期望您的每一天
+            %br
+            都能平安 順心 美滿
+            %br
+            真心祝福您
+            %br
+            生日快樂!
+          %div{:style => "text-align:right; margin-left:80px; font-family:Convergence"}
+            大紀元時報 業務 Sam 敬上
+
+  %hr{:style => 'margin: 30px 0; background: #ccc; color: #ccc'}
+  %table{:style => 'font-weight: bold; font-family: Andika; vertical-align: center; color: #1967B1; width: 820px; margin: 0 auto; font-size: 14px; padding-right: 10px; padding: 15px'}
+    %tr
+      %td{:style => 'width: 240px; vertical-align: center; text-align: right'}
+        此張卡片寄送服務 by
+      %td{:style => 'width: 140px;'}
+        = link_to image_tag('http://cactis.airfont.com/assets/images/filenames/1776/original/sub-logo.gif'), '#'
+      %td{:style => 'vertical-align: bottom'}
+        = link_to image_tag('http://cactis.airfont.com/assets/images/filenames/1777/original/btn-blue.gif'), '#'
+  %div{:style => 'text-align: center'}
+    %img{:src => 'http://cactis.airfont.com/assets/images/filenames/1778/original/img-ad-03.jpg'}

@@ -1,0 +1,11 @@
+%h2 密碼遺忘?
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+  .description 若您一開始是由 Facebook 或 Google 登入本站註冊，往後希望能直接從本站登入，也可以利用密碼遺忘來設定自己的密碼。
+  = devise_error_messages!
+  %p
+    = f.label :email
+    %br/
+    = f.email_field :email
+  %p= f.submit "重新設定密碼"
+= render :partial => "devise/shared/links"
+

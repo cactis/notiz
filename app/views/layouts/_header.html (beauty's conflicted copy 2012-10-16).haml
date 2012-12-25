@@ -1,0 +1,33 @@
+#navigator
+  #logo
+    = link_to 'NotiZ', '/'
+  - if current_user
+    #tags_bar
+      #tags= render "/tags/tags"
+  #nav
+    %ul
+      = link_to "　", 'http://' + subdomain + '.' + (development? ? 'airfont.com' : 'local.airfont.com')
+      - if current_user
+        %li
+          #notifications_count.num{:class => current_user.notifications.count == 0 ? 'disabled' : nil}= current_user.notifications.count
+        %li= link_to current_user.email.split('@')[0], 'javascript:void(0)', :id => 'current_user', "data-token" => current_user.token
+        %li= link_to "#", '#', :class => 'config icon icons_config', :title => '設定', :id => 'user_config'
+        %li= link_to "#", destroy_user_session_path, :method => :delete, :class => 'logout icon icons_logout', :confirm => '登出系統？', :title => '登出'
+      - else
+        %li= link_to "註冊", new_user_registration_path
+        %li= link_to "登入", new_user_session_path
+
+:coffeescript
+  $(document).ready ->
+    $('#notifications_count').click (e) ->
+      $.fn.slideUpOption()
+      $.fn.log $(e.target)
+      $.ajax
+        url: '/notifications'
+        success: (data, textStatus, jqXHR) ->
+          $.fn.log data
+          $("#notifications").detach()
+          $(data).hide().insertAfter($(e.target)).slideDown
+            duration: 800
+            easing: 'easeOutBounce'
+      false

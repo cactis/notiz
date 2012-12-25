@@ -1,0 +1,75 @@
+= form_for @post, :remote => true do |f|
+  .title 樣式設定
+  - if @post.is_a?(Clip)
+    = f.check_box :nborder
+    = f.label :nborder, "邊框"
+  - else
+    = f.check_box :nnote
+    = f.label :nnote, "筆記紙"
+  = f.check_box :nshadow
+  = f.label :nshadow, "陰影"
+  = f.check_box :nradius
+  = f.label :nradius, "圓角"
+
+  %hr
+    .title 操作
+  - if @post.owned?
+    = f.check_box :lock
+    = f.label :lock, "鎖定(他人不能編輯)"
+  - else
+    (本便條紙已被作者鎖定。)
+
+
+- if @post.owned?
+  %hr
+  .title 將便條紙貼/圖卡貼到其他桌面:
+  .container
+    - (Tag.all - [@tag]).each do |tag|
+      .item{:id => dom_id(tag, 'target'), :class => 'target'}
+        = link_to tag.name, '#'
+
+- if @post.admin?
+  %hr
+  = link_to '刪除!', note_path(@post), :class => 'delete1 button', :remote => true, :confirm => '確定刪除？', :method => :delete, :title => '刪除'
+
+%hr
+.title 關於
+= about @post
+
+:coffeescript
+  $(document).ready ->
+
+    # 即時設定格式
+    $('.post input:checkbox').click (e) ->
+      $post = $(e.target).closest('.post')
+      $class = $(e.target).id()
+      $post.toggleClass($class)
+      klas = {}
+      klas[$class] = $(e.target).is(':checked')
+      $.ajax
+        url: '/posts/' + $post.id()
+        type: 'PUT'
+        data:
+          post: klas
+
+    # 在桌面間移動物件
+    $('.target a').click (e) ->
+      $post = $(e.target).closest('.post')
+      $tree_id = $(e.target).closest('.target').id()
+      $.fn.log $tree_id
+      $.ajax
+        url: '/posts/' + $post.id()
+        type: 'PUT'
+        data:
+          post:
+            tree_id: $tree_id
+        success: ->
+          $post.fadeOut 1000
+      false
+
+    $('.option .close_30').click (e) ->
+      $(this).closest('.option').slideUp
+        duration: 500
+        easing: 'easeOutBounce'
+      false
+

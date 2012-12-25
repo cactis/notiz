@@ -1,0 +1,89 @@
+
+.post
+  margin: 0.5em
+  padding: 0 0 1em 0
+  +box-shadow(0 5px 5px rgba(0,0,0,0.3))
+  .toolbar
+    height: 20px
+    display: none
+    padding: 6px 10px 0
+    top: -26px
+    position: absolute
+    line-height: 20px
+    +contrasted(#000)
+    +border-radius(10px 10px 0 0)
+    +opacity(0.6)
+    &:hover
+      +opacity(1.0)
+  .option
+    left: 0
+  .subject, .body
+    &:focus
+      outline: none
+    padding: 3px 8px
+    min-height: 1.5em
+  .subject
+    font-family: Coustard
+    p
+      padding: 0
+      line-height: 1.8
+      margin: 0
+  .body
+    padding: 1em
+    overflow: hidden
+    a
+      margin: 0 3px
+      border-bottom: 1px dotted #ccc
+
+.float .post
+  float: left
+  //padding-bottom: 10px
+  .toolbar
+    &.visible
+      display: inline-block
+      position: absolute
+      right: 0
+      z-index: 999
+
+.absolute .post
+  .toolbar
+    &.visible
+      display: block
+      position: absolute
+      right: 0
+      z-index: 1009
+  .subject
+    display: none
+
+.clip
+  padding: 0
+
+.nnote
+  background: url(bg/bg11.jpg)
+  color: #000
+
+.nborder
+  padding: 7px
+  background: #fff
+
+.nradius
+  &, img
+    +border-radius(10px)
+  .subject
+    +border-radius(5px 5px 0 0)
+  .body
+    +border-radius(5px)
+
+.float
+  .nradius
+    .body
+      +border-radius(0 0 5px 5px)
+
+.nborder.nradius
+  img
+    +border-radius(0px)
+
+.nshadow
+  //+box-shadow(rgba(black, 0.3) 0 0 5px, rgba(black, 0.3) 0 0 3px 5px)
+  //+box-shadow(0px 0px 10px 0px #000)
+  +single-box-shadow

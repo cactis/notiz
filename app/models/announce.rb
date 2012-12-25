@@ -1,0 +1,4 @@
+class Announce < Post
+
+end
+

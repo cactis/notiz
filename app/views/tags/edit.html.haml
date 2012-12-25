@@ -1,0 +1,42 @@
+= javascript_include_tag 'tags_edit'
+
+#tag_config_form.option
+  .content
+    .title 桌面設定
+    = form_for @tag, :remote => true do |f|
+      .row
+        = f.label :name, "桌面名稱"
+        = f.text_field :name, :required => 'required', 'data-old' => @tag.name, :value => @tag.name
+        - if !@tag.owned? && @tag.name != @tag[:name]
+          .footer
+            = link_to "恢復原桌面名稱! (#{@tag[:name]})", '#', :class => 'undo_naming button'
+      .row
+        顯示模式
+        = f.radio_button :float, true
+        = f.label :float, "自動排版"
+        = f.radio_button :float, false
+        = f.label :float, "畫板模式"
+
+      - if @tag.owned?
+        %hr
+        邀請:
+        .row
+          = f.label :sharing_info, "邀請用語"
+          = f.text_field :sharing_info, 'data-old' => @tag.sharing_info
+        .row
+          = f.label :label, "邀請對象"
+          = f.text_field :sharing_mail_lists, 'data-old' => @tag.sharing_mail_lists, :title => '以 ; 號分隔多組帳號'
+        .row
+          同時邀請多人時，請用逗號或分號間隔。
+          = link_to '發送邀請函', '#', :class => 'button', :id => 'send_sharing_mail'
+        %hr
+        拖拉電腦檔案夾裡的任何圖片至桌面左下角的「更換桌面」圖示上，即可立即更換桌布。
+        = link_to '恢復原始桌布!', '#', :class => 'restore_wallpaper button'
+        %hr
+        移除本桌面時，相關物件，如便條紙、圖卡及附件會一併刪除。
+        = link_to '移除桌面!!', @tag, :confirm => "移除本 '#{@tag.name}' 桌面，並一併將桌面上的所有物品送入碎紙機？", :class => 'button', :method => :delete if Tag.all.count > 1
+        %hr
+        關於:<br/>
+        = about @tag
+    = link_to '#', '#', :class => 'close_30 icon icons_close'
+

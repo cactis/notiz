@@ -1,0 +1,25 @@
+- if controller_name != 'sessions'
+  = link_to "登入", new_session_path(resource_name)
+  %br/
+- if devise_mapping.registerable? && controller_name != 'registrations'
+  = link_to "註冊", new_registration_path(resource_name)
+  %br/
+- if devise_mapping.recoverable? && controller_name != 'passwords'
+  = link_to "密碼遺忘?", new_password_path(resource_name)
+  %br/
+- if devise_mapping.confirmable? && controller_name != 'confirmations'
+  = link_to "發送帳號確認信件?", new_confirmation_path(resource_name)
+  %br/
+-# if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
+  = link_to "發送帳號解除鎖定信件?", new_unlock_path(resource_name)
+  %br/
+-# if devise_mapping.oauthable?
+  - resource_class.oauth_providers.each do |provider|
+    = link_to "Sign in with #{provider.to_s.titleize}", oauth_authorize_url(resource_name, provider)
+    %br/
+
+%hr
+%h2 或者由 Facebook 或 Google 直接登入
+= link_to_oauth_login(:facebook)
+= link_to_oauth_login(:google_apps)
+

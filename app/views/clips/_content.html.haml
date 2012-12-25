@@ -1,0 +1,19 @@
+.toolbar
+  = link_to '#', post_comments_path(clip), :class => 'open_comments icon icons_comments', :title => '留言板'
+  -# = link_to '#', '#', :class => 'moveto', :title => '移動至另一個桌送'
+  = link_to '#', '#', :class => 'config icon icons_config'
+.option
+  .content
+  .footer
+    = link_to '', '#', :class => 'close_30'
+
+-# if @source = clip.source
+- large_image_path = '#' #picture_path(@source, :size => 'large')
+= raw link_to(clip.body.html_safe, large_image_path, :class => 'colorbox', :rel => 'g', :target => '_blank')
+-# else
+  .memo
+    (缺圖)
+    = clip.id
+    = clip.body.html_safe
+.comments
+

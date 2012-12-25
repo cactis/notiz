@@ -1,0 +1,11 @@
+- if @tag.float
+  .note{:id => dom_id(note), :class => "post #{note.classes}", :style => "width: #{note.width}px; height: #{note.height}px;"}
+    = render :partial => '/notes/content', :locals => {:note => note}
+
+- else
+  .note{:id => dom_id(note), :class => "post #{note.classes}", :style => "position:absolute; left:#{note.left}px; top:#{note.top}px; width:#{note.width}px; height:#{note.height}px"}
+    = render :partial => '/notes/content', :locals => {:note => note}
+
+:coffeescript
+  $(document).ready ->
+    $.fn.initial_note "##{dom_id(note)}"

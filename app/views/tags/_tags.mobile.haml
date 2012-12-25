@@ -1,0 +1,20 @@
+.tags
+  = select_tag :tag, options_for_select(Tag.order("field (trees.id, #{current_user.tags_list})").map{|t| [t.name, t.id]}, params[:tag_id]), :include_blank => true
+
+
+:coffeescript
+  $('document').ready ->
+    $('#tag').change (e) ->
+      window.location.href = '/tags/' + e.target.value
+      -# $.ajax
+        url: '/tags/' + e.target.value + '/notes'
+        success: (data, textStatus, jqXHR) ->
+          $('#content').html(data)
+          $.fn.log data
+          $.fn.log textStatus
+          $.fn.log jqXHR
+      $.fn.log e
+      $.fn.log e.target.value
+      $.fn.log e.target.selectedIndex
+      $.fn.log $('option[value=' + e.target.value + ']').html()
+

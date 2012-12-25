@@ -1,0 +1,9 @@
+.nav
+  .tag= link_to @note.tag.name, tag_path(@note.tag)
+  >
+  = strip_tags @note.subject
+  = link_to '(Edit)', edit_tag_note_path(@note.tag, @note)
+.note
+  .body
+    = raw auto_link(@note.body, :sanitize => false)
+

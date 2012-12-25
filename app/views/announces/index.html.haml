@@ -1,0 +1,17 @@
+%h1= link_to "發佈公告"
+= form_for Announce.new, :remote => true do |f|
+  .row
+    = f.label :subject, "公告文字"
+    = f.text_field :subject
+  .action
+    = f.submit "發佈"
+
+#announces
+  = render @announces
+
+:coffeescript
+  $(document).ready ->
+    $('form').bind 'ajax:success': (data, textStatus, jqXHR) ->
+      $('#announces').prepend textStatus
+      $('form')[0].reset()
+

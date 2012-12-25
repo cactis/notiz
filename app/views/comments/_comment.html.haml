@@ -1,0 +1,22 @@
+.comment{:id => dom_id(comment)}
+  .about
+    = "#{comment.user.title}"
+    %abbr.timeago{:title => comment.updated_at}
+      = comment.updated_at
+  = link_to '#', '#', :class => 'del'
+  = simple_format auto_link(comment.comment, :sanitize => false)
+
+:coffeescript
+  $(document).ready ->
+    $('.comment .del').unbind('click').click (e) ->
+      if confirm('確定刪除本留言？')
+        $target = $(e.target).closest('.comment')
+        $.ajax
+          url: '/comments/' + $target.id()
+          type: 'delete'
+          success: (data, textStatus, jqXHR) ->
+            $target.fadeOut 300
+          error: ->
+            $target.addClass 'swing'
+      false
+

@@ -1,0 +1,38 @@
+
+#assets
+  #mcs5_container
+    .customScrollBox
+      .horWrapper
+        .container
+          .content
+            %h4
+            %p
+              = render @images
+        .dragger_container
+          .dragger
+  #dropbox
+    #progressbar
+      -# %span#droplabel
+      Drop file here...
+
+:coffeescript
+  $(window).load ->
+    mCustomScrollbars()
+
+  mCustomScrollbars = ->
+    $("#mcs_container").mCustomScrollbar "vertical", 400, "easeOutCirc", 1.05, "auto", "yes", "yes", 10
+    $("#mcs2_container").mCustomScrollbar "vertical", 0, "easeOutCirc", 1.05, "auto", "yes", "no", 0
+    $("#mcs3_container").mCustomScrollbar "vertical", 900, "easeOutCirc", 1.05, "auto", "no", "no", 0
+    $("#mcs4_container").mCustomScrollbar "vertical", 200, "easeOutCirc", 1.25, "fixed", "yes", "no", 0
+    $("#mcs5_container").mCustomScrollbar "horizontal", 500, "easeOutCirc", 1, "fixed", "yes", "yes", 20
+
+  LoadNewContent = (id, file) ->
+    $("#" + id + " .customScrollBox .content").load file, ->
+      mCustomScrollbars()
+
+
+  $.fx::cur = ->
+    return @elem[@prop]  if @elem[@prop]? and (not @elem.style or not @elem.style[@prop]?)
+    r = parseFloat(jQuery.css(@elem, @prop))
+    (if typeof r is "undefined" then 0 else r)
+

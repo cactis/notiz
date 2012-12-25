@@ -1,0 +1,13 @@
+.hidden
+  = form_for @note do |f|
+    = f.text_area :body, :id => 'body'# dom_id(@note, 'editor'), :class => 'editor'
+
+= javascript_include_tag "/ckeditor/ckeditor"
+:coffeescript
+  $(document).ready ->
+    CKEDITOR.replace('body', {width: '100%', height: 200});
+
+  CKEDITOR.on "instanceReady", (evt) ->
+    editor = evt.editor
+    editor.execCommand "maximize"
+

@@ -1,0 +1,100 @@
+@import url(http://fonts.googleapis.com/css?family=Reenie+Beanie);
+
+/** {*/
+/*	margin:0;*/
+/*	padding:0;*/
+/*	font-size:100%;*/
+/*	line-height:1;*/
+/*}*/
+
+/*body {*/
+/*	font-family:'Reenie Beanie', serif;*/
+/*	text-align:center;*/
+/*	color:#333;*/
+/*	background-image:url(page-bg.jpg);*/
+/*	padding-top:80px;*/
+/*}*/
+
+.note {
+/*	width:350px;*/
+/*	padding:50px;*/
+	margin:auto;
+	position:relative;
+/*	background-color:#fe6;*/
+/*	background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#fe6), to(#f6ef97), color-stop(.6,#f5da41));*/
+/*	background:-moz-linear-gradient(top, #fe6, #f5da41, #f6ef97);*/
+	text-shadow:0 1px 0 #F6EF97;
+/*	box-shadow:0 0 5px rgba(0,0,0,.2);*/
+/*	-webkit-box-shadow:0 0 5px rgba(0,0,0,.2);*/
+/*	-moz-box-shadow:0 0 5px rgba(0,0,0,.2);*/
+}
+
+.note:before {
+	content:'';
+	display:block;
+	width:90%;
+	height:20%;
+	position:absolute;
+	left:10px;
+	bottom:3px;
+	background-color:rgba(0,0,0,.5);
+	-o-transform:rotate(-3deg);
+	-webkit-transform:rotate(-3deg);
+	-moz-transform:rotate(-3deg);
+	box-shadow:0 0 10px #000;
+	-webkit-box-shadow:0 0 10px #000;
+	-moz-box-shadow:0 0 10px #000;
+	opacity:1;
+	z-index:-2;
+}
+
+.note:after {
+	content:'';
+	display:block;
+	width:90%;
+	height:20%;
+	position:absolute;
+	right:10px;
+	bottom:3px;
+	background-color:rgba(0,0,0,.5);
+	box-shadow:0 0 10px #000;
+	-webkit-box-shadow:0 0 10px #000;
+	-moz-box-shadow:0 0 10px #000;
+	opacity:1;
+	z-index:-2;
+}
+
+
+.note h1:before {
+	content:'';
+	display:block;
+	width:200px;
+	height:60px;
+	position:absolute;
+	top:-30px;
+	left:125px;
+	background-color:rgba(255,255,255,.25);
+	border: none;
+	-o-transform:rotate(-5deg);
+	-webkit-transform:rotate(-5deg);
+	-moz-transform:rotate(-5deg);
+	box-shadow:0 0 2px rgba(0,0,0,.15);
+	-webkit-box-shadow:0 0 2px rgba(0,0,0,.15);
+	-moz-box-shadow:0 0 2px rgba(0,0,0,.15);
+	opacity:1;
+}
+
+.note h1 {
+	font-size:48px;
+	line-height:48px;
+	letter-spacing:-5px;
+}
+
+.note p {
+	font-size:24px;
+	line-height:36px;
+	margin-top:20px;
+}
+
+.note a {color:#333;}
+

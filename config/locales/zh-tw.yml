@@ -1,0 +1,198 @@
+zh-tw:
+  date:
+    formats:
+      default: "%Y年%b%d日(%a)"
+      short: "%b%d日"
+      long: "%Y年%b%d日"
+    day_names: [星期日, 星期一, 星期二, 星期三, 星期四, 星期五, 星期六]
+    abbr_day_names: [日, 一, 二, 三, 四, 五, 六]
+    month_names: [一月, 二月, 三月, 四月, 五月, 六月, 七月, 八月, 九月, 十月, 十一月, 十二月]
+    # abbr_month_names: [1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+    order: [:year, :month, :day]
+
+  time:
+    formats:
+      default: "%Y年%b%d日(%a) %H:%M"
+      short: "%b%d日 %H:%M"
+      long: "%Y年%b%d日 %H:%M"
+    am: "上午"
+    pm: "下午"
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "半分鐘"
+      less_than_x_seconds:
+        one: "不到%{count}秒"
+        other: "不到%{count}秒"
+      x_seconds:
+        one: "%{count}秒"
+        other: "%{count}秒"
+      less_than_x_minutes:
+        one: "%{count}分鐘"
+        other: "%{count} 分鐘"
+      x_minutes:
+        one: "%{count}分鐘"
+        other: "%{count}分鐘"
+      about_x_hours:
+        one: "%{count}小時"
+        other: "%{count}小時"
+      x_days:
+        one: "%{count}天"
+        other: "%{count}天"
+      about_x_months:
+        one: "%{count}個月"
+        other: "%{count}個月"
+      x_months:
+        one: "%{count}個月"
+        other: "%{count}個月"
+      about_x_years:
+        one: "%{count}年"
+        other: "%{count}年"
+      almost_x_years:
+        one: "%{count}年"
+        other: "%{count}年"
+      over_x_years:
+        one: "%{count}年"
+        other: "%{count}年"
+    prompts:
+      year: "年"
+      month: "月"
+      day: "日"
+      hour: "時"
+      minute: "分"
+      second: "秒"
+
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+      precision: 3
+    currency:
+      format:
+        format: "%u %n"
+        unit: "NT$"
+        separator: "."
+        delimiter: ","
+        precision: 2
+    percentage:
+      format:
+        delimiter: ""
+    precision:
+      format:
+        delimiter: ""
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " 和 "
+      last_word_connector: ", 和 "
+
+
+
+  errors:
+    template:
+      header:
+        one: "1 個錯誤，%{model}資料無法儲存。"
+        other: "%{count} 個錯誤，%{model}資料無法儲存。"
+      body: "錯誤說明："
+    messages:
+      not_saved: "儲存失敗"
+      inclusion: "沒有包含在列表中"
+      exclusion: "是被保留的"
+      invalid: "無效"
+      confirmation: "比對不相符"
+      accepted: "必須是可被接受的"
+      empty: "不能為空白"
+      blank: "不能為空白"
+      too_long: "過長(最長%{count}個字)"
+      too_short: "過短(最短%{count}個字)"
+      wrong_length: "字數錯誤(必須%{count}個字)"
+      taken: "已被使用"
+      not_a_number: "必須為數字"
+      greater_than: "必須大於%{count}"
+      greater_than_or_equal_to: "必須大於或等於%{count}"
+      equal_to: "必須等於%{count}"
+      less_than: "必須小於%{count}"
+      less_than_or_equal_to: "必須小於或等於%{count}"
+      odd: "須為奇數"
+      even: "須為偶數"
+
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 無效記錄
+    models:
+      user: 會員
+      plan: 學習計劃
+      portfolio: 學習歷程
+      book: 考試用書
+      tracking_score: 原卷成績
+      question: 原卷題庫
+      item: 考題
+      past_item: 考題
+      essay: 申論題
+      answer: 申論題答案卷
+      group: 學習小組
+      comment: 用戶留言
+      announce: 網站公告
+      todo: 活動
+      session: 登入
+      assessment_paper: 題庫
+      assessment_response: 答案卷
+      bbq_unit: 學習單元
+      assessment_unit: 單元
+      assessment_question: 題庫
+      assessment_outline: 大綱
+      assessment_like: 讚
+      assessment_favorite: 收藏
+      assessment_mark: 留意
+      assessment_review: 複習考
+      assessment_category: 類別考
+      unit: 單元樹
+      outline: 學習大綱
+      scratch: 黑板畫
+      favorite: 收藏
+      mark: 留意
+      like: 讚
+      post: 測驗
+      tree: 單元
+
+    attributes:
+      user:
+        password: 密碼
+        Password: 密碼
+        password_confirmation: 確認密碼
+        email: 電子郵地址
+        login: 帳號名稱
+        nickname: 姓名
+        current_password: 目前密碼
+      todo:
+        start_at: 啟始日
+        end_at: 結束日
+
+  bottom:
+    power_by:
+      service: 客服信箱
+      build_site: 申請網站
+
+  views:
+    pagination:
+      previous: "« 上頁"
+      next: "» 下頁"
+      truncate: "..."
+

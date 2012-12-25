@@ -1,0 +1,39 @@
+.tags
+  = render :partial => '/tags/tag', :collection => Tag.order("field (trees.id, #{current_user.tags_list})")
+  = link_to '+', '#', :id => 'add_tag', :title => '新增桌面', :class => 'add1 icon icons_add_tag'
+
+:coffeescript
+  $(document).ready ->
+    $('#add_tag').click ->
+      if name = prompt('請輸入桌面名稱：', '我的桌面')
+        $.ajax
+          url: '/tags'
+          type: 'POST'
+          data:
+            tag:
+              name: name
+      false
+
+
+    if Notiz.tags.current.id
+      $(".tag_" + Notiz.tags.current.id).addClass('active')
+
+    $('.tags')
+      .sortable
+        items: 'div'
+        delay: 500
+        axis: 'x'
+        cursor: 'move'
+        #'crosshair'
+        start: (e, ui) ->
+        stop: (e, ui) ->
+          list = []
+          $(this).find('.tag').each ->
+            list.push $(this).attr('id').split('_')[1]
+          $.ajax
+            url: '/accounts/#{current_user.id}'
+            type: 'put'
+            data:
+              account:
+                tags_list: list.join(',')
+

@@ -1,0 +1,69 @@
+
+
+@mixin link-button($w, $h, $bg)
+  +opacity(0.6)
+  display: inline-block
+  text-indent: -999em
+  width: $w
+  height: $h
+  background: url($bg) center center no-repeat
+  &:hover
+    +opacity(1.0)
+  &:active
+    +opacity(0.8)
+
+.editing
+  +link_button(16px, 16px, 'editing_16x16.png')
+
+.draggable
+  +link-button(16px, 16px, 'draggable.png')
+.delete
+  +link-button(16px, 16px, 'delete.png')
+
+.del
+  +link-button(16px, 16px, 'del.png')
+
+.add
+  +link-button(16px, 16px, 'add.png')
+
+.add1
+  margin-left: 1em
+
+.subject_background, .body_background
+  +link-button(16px, 16px, 'bgcolor_16x16.png')
+
+.redo
+  +link-button(16px, 16px, 'redo_16x16.png')
+.close
+  +link-button(16px, 16px, 'close_16x16.png')
+
+.moveto
+  +link-button(16px, 16px, 'moveto_16x16.png')
+
+.scroll_left
+  +link-button(16px, 16px, 'scroll_left_16x16.png')
+
+.scroll_right
+  +link-button(16px, 16px, 'scroll_right_16x16.png')
+
+
+.upload_images
+  //+link_button(48px, 48px, 'photo_48x48.png')
+  z-index: 999999
+  &:active
+    //+link_button(128px, 128px, 'photo_128x128.png')
+    border: 1px solid #333
+
+.upload_wallpapers
+  //+link_button(48px, 48px, 'wallpaper_48x48.png')
+  z-index: 999999
+  &:active
+    //+link_button(128px, 128px, 'wallpaper_128x128.png')
+    border: 1px solid #333
+
+.dirty
+  .dirty_icon
+    +link-button(16px, 16px, 'dirty_16x16.png')
+  display: none
+  &.true
+    display: inline-block

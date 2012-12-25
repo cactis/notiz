@@ -1,0 +1,45 @@
+
+form.formtastic
+  padding: 1em 2em
+  width: 610px
+  h1, h2
+    margin-top: 0
+    font-size: 1.1em
+  fieldset > ol > li
+    padding: 0
+    margin: 0 0 0.5em 0
+    label
+      display: block
+      width: 8em
+      float: left
+      text-align: right
+      padding-top: .2em
+      padding-right: 0.5em
+    &.datetime input
+      width: auto
+    &.monetary label.currency
+      width: auto
+      padding: 0.25em
+
+  li
+    list-style-type: none
+    &.datetime input, &.date input
+      display: inline
+    &.datetime img, &.date img
+      vertical-align: middle
+      margin-left: 0.25em
+
+  input.button, &.button.button
+    height: 25px
+    padding: 0.2em 1em 0.2em 2.5em
+    margin-left: 5px
+
+
+  input[type=number]
+    width: 50px
+    text-align: center
+    font-size: 0.8em
+    color: #000
+  input[type=range]
+    width: 80px
+

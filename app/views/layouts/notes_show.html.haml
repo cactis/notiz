@@ -1,0 +1,12 @@
+!!! 5
+%html
+  %head
+    %link{:href => 'http://fonts.googleapis.com/css?family=Adamina|Andika|Antic|Architects+Daughter|Cabin|Cabin+Sketch:700|Comfortaa|Coustard|Delius+Swash+Caps|Didact+Gothic|Gloria+Hallelujah|Hammersmith+One|Josefin+Sans:400,700|Julee|Michroma|Monoton|Montez|Numans|Nunito|Patrick+Hand|Philosopher|Play|Prociono|Rosario|Schoolbell|Short+Stack|Snippet|Sorts+Mill+Goudy|Ubuntu|Varela+Round', :rel => 'stylesheet', :type => 'text/css'}
+    %link{:href => '/assets/favorite-icon.png', :rel => 'shortcut icon'}
+    #header
+      - if File.exists?("#{Rails.root}/app/assets/stylesheets/#{controller_name}_#{action_name}.css.sass")
+        = stylesheet_link_tag "#{controller_name}_#{action_name}"
+
+    #wrapper
+      = yield
+

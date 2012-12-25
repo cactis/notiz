@@ -1,0 +1,11 @@
+- if @tag.float
+  .clip{:id => dom_id(clip), :class => "post #{clip.classes}", :style => "width:#{clip.width}px; height:#{clip.height}px;"}
+    = render :partial => '/clips/content', :locals => {:clip => clip}
+- else
+  .clip{:id => dom_id(clip), :class => "post #{clip.classes}", :style => "position:absolute; left:#{clip.left}px; top:#{clip.top}px; width:#{clip.width}px; height:#{clip.height}px;"}
+    = render :partial => '/clips/content', :locals => {:clip => clip}
+
+:coffeescript
+  $(document).ready ->
+    $.fn.initial_note "##{dom_id(clip)}"
+

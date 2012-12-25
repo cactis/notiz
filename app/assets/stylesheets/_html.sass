@@ -1,0 +1,110 @@
+$a_color: #00394D
+$a_hover_color: #002185
+
+html
+  body
+    margin: 0
+    background: transparent
+    //overflow: hidden //visible!important
+    overflow: visible
+    padding-bottom: 2em
+    //width: 100000px
+    //height: 100000px
+    font-size: 14px
+    //cursor: pointer
+    line-height: 1.6
+    font-family: Comfortaa, Andika
+    //background-color: #ccc
+
+    a, select, input, option
+      font-size: inherit
+      line-height: inherit
+      font-family: inherit
+    a
+      color: inherit
+      &:link, &:visited, &:active
+        text-decoration: none
+    h1
+      font-size: 1.4em
+      font-weight: bold
+      margin: 0.5em 0 0.1em
+    h2
+      font-size: 1.3em
+      font-weight: bold
+      margin: 0.3em 0 0.1em
+    h3
+      font-size: 1.2em
+      font-weight: bold
+      margin: 0.2em 0 0.1em
+    legend
+      font-weight: bold
+    ol, ul
+      margin: 1em 1em 1em 3em
+      ol, ul
+        margin: 0.5em 1.5em
+      li
+        margin: 0
+    ol li
+      list-style-type: decimal
+    ul li
+      list-style-type: disc
+      ul li
+        list-style-type: circle
+        ul li
+          list-style-type: square
+    dl
+      margin-bottom: 0.5em
+      dt, dd
+        display: inline-block
+      dt
+        width: 25%
+        text-align: right
+        margin-right: 0.5em
+        border-bottom: 1px dotted #cdcdcd
+        vertical-align: top
+      dd
+        width: 70%
+        border-left: 1px solid #ccc
+        padding-left: 0.5em
+    table
+      margin: 2em 1em
+      th, td
+        padding: 2px 5px
+      thead
+        th
+          border-bottom: 2px solid #333
+          text-align: center
+      tbody
+        th, td
+          border-bottom: 1px solid #aaa
+    p
+      margin: 1em 0
+
+    blockquote
+      font-family: Numans
+      font-size: 12px
+      border-left: 1px solid #666
+      margin-left: 1em
+      padding: 1em
+
+form
+  padding: 1em 2em 1em 0
+  margin: 1em 0
+  p
+    padding: 0.5em 0
+
+input, select
+  padding: 2px 4px
+  outline: none
+  border: 1px solid #ccc
+  +border-radius(3px)
+  &[type=text], &[type=email], &[type=password]
+    &:focus
+      +box-shadow(inset 1px 1px 1px #333)
+  &[type=submit]
+    float: right
+    cursor: pointer
+    padding: 0.2em 1em
+  &[type=number], &[type=range]
+    width: 50px
+    text-align: center

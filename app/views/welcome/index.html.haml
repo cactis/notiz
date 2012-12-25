@@ -1,0 +1,8 @@
+#backup
+  %h1 資料備份
+  %ul
+    %li= link_to "桌面設定(XML)", archive_path(:id => "tags", :format => :xml), :target => '_blank'
+    %li= link_to "桌面設定(JSON)", archive_path(:id => "tags", :format => :json), :target => '_blank'
+    %li= link_to "便條紙(XML)", archive_path(:id => "notes", :format => :xml), :target => '_blank'
+    %li= link_to "便條紙(JSON)", archive_path(:id => "notes", :format => :json), :target => '_blank'
+

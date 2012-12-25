@@ -1,0 +1,25 @@
+.tag{:id => dom_id(tag), :class => dom_id(tag)}
+  -# if (controller_name == 'tags' && params[:id].to_i == tag.id) || params[:tag_id].to_i == tag.id
+    = link_to '#', '#', :class => 'config'
+    .toolbar
+      .switch_float
+        = link_to '自動排版模式', '#', :class => tag.float ? 'true' : '', :id => 'float_1'
+        = link_to '畫板模式', '#', :class => tag.float ? '' : 'true', :id => 'float_0'
+      %hr
+      = link_to '修改桌面名稱', '#', :class => 'naming'
+      - if !tag.owned? && tag.name != tag[:name]
+        = link_to "恢復原桌面名稱!(#{tag[:name]})", '#', :class => 'undo_naming'
+
+      = link_to '恢復原始桌布!', '#', :class => 'restore_wallpaper' if tag.owned?
+      - if tag.owned?
+        %hr
+        = link_to '分享給...', new_sharing_path(:tag_id => tag.id), :class => 'share colorbox'
+        %hr
+        = link_to '刪除桌面', @tag, :confirm => "刪除 '#{tag.name}'，並一併將桌面所含便條紙刪除？", :class => 'delete1', :method => :delete if Tag.all.count > 1
+  = link_to tag.name, tag_notes_path(tag), :class => 'goto'
+
+-# if (controller_name == 'tags' && params[:id].to_i == tag.id) || (@tag && params[:tag_id].to_i == tag.id)
+  .floatRight
+    = link_to '*', edit_tag_path(tag), :remote => true, :class => 'colorbox edit'
+    = link_to '-', @tag, :confirm => "刪除 '#{@tag.name}'，並一併將桌面所含便條紙刪除？", :class => 'delete', :method => :delete if Tag.all.count > 1
+

@@ -1,0 +1,7 @@
+- if params[:tag_id]
+  #notes_toolbar
+    = link_to '+', '#', :class => 'icon icons_add_note', :id => 'add_note', :title => '新增便條紙'
+    %span.memo.dirty
+      = link_to '#', 'javascript:void(0)', :class => 'dirty_icon', :title => "書寫時，可隨時按 F2 或 Ctrl-S 存檔"
+      (F2)
+

@@ -1,0 +1,224 @@
+#header
+  +contrasted(#333)
+  background: url(bg/bg7.jpg)
+  +box-shadow(0 3px 10px #000)
+  z-index: 99999
+  position: fixed
+  width: 100%
+  #navigator
+    margin: 5px 10px
+    #logo
+      display: inline-block
+      font-size: 1.5em
+      font-weight: bold
+      font-family: Coustard, 'Cabin Sketch', 'Gloria Hallelujah'
+      line-height: 1.2
+      .container
+        padding-left: 1em
+    #tags_bar
+      display: inline-block
+      margin-left: 50px
+      width: 80%
+      #tags
+        //width: 80%
+        padding: 0 1em
+        display: inline-block
+        //overflow: hidden
+        //position: relative
+        .tags1
+          position: relative
+          display: inline-block
+          width: 1000em
+    #notes_toolbar
+      display: inline-block
+    #nav
+      display: inline-block
+      @include nav
+      ul
+        top: 8px
+        position: absolute
+        right: 10px
+
+
+#wrapper
+  padding: 55px 1em
+  #content
+    padding: 15px 10px
+
+#loader
+  margin: 0
+  padding: 0
+  width: 32px
+  height: 32px
+  text-indent: -999em
+  margin-bottom: 10px
+  background: url(loading_32x32.gif) no-repeat 50% 50%
+  +border-radius(3px)
+  display: block
+  top: 40px
+  right: 20px
+  position: fixed
+  z-index: 999999
+
+#notes_toolbar
+  display: inline-block
+  margin-right: 1em
+  //position: fixed
+  //right: 10px
+
+#status
+  +opacity(0.5)
+  padding: 1em
+  bottom: 0
+  position: fixed
+
+
+
+
+#mcs5_container
+  padding: 1em
+  background-color: #111
+  img
+    height: 100px
+
+
+#assets1
+  position: fixed
+  width: 80%
+  bottom: 1em
+  height: 200px
+  overflow-y: hidden
+  overflow-x: visible
+  +contrasted(#000)
+  +box-shadow(1px 1px 3px #000)
+  #assets_list
+    overflow-x: hidden
+    img
+      margin: 5px 10px
+      height: 100px
+      +box-shadow(0 4px 4px rgba(0,0,0,0.3))
+  #dropbox
+    vertical-align: center
+    font-size: 10px
+    display: table
+    margin-bottom: 2em
+    bottom: 0
+    display: fixed
+    width: 100%
+    height: 30px
+    +contrasted(#eee)
+    .ui-progressbar
+      text-align: center
+
+#upload_images, #upload_wallpapers
+  position: fixed
+  bottom: 12px
+  bottom: 0
+  cursor: move
+  cursor: -webkit-grab
+  text-align: center
+  display: block
+
+#upload_images
+  right: 12px
+
+#upload_wallpapers
+  left: 12px
+
+#infos
+  position: fixed
+  padding: 2px 5px
+  bottom: 0
+  left: 64px
+
+#jGrowl
+  top: 30px
+  +opacity(0.8)
+
+#attaches
+  position: fixed
+  bottom: 0
+  right: 100px
+  +opacity(0.5)
+  &:hover
+    //z-index: 99999
+    +opacity(1)
+
+#notifications_count
+  +contrasted(#bd0f0f)
+  color: #efefef
+  display: inline-block
+  padding: 0 0.6em
+  cursor: pointer
+  +border-radius(2px)
+  &.disabled
+    +contrasted(#aaa)
+    +opacity(0.4)
+
+#notifications, #user_config_form, #tag_config_form
+  padding: 0 0 2em
+  position: absolute
+  +single-box-shadow
+  +border-radius(2px)
+  +contrasted(#efefef)
+  width: 400px
+  right: 0
+  +opacity(1)
+  a
+    color: #36C
+  .title
+    +contrasted(#F5F5F5)
+    font-weight: bold
+    line-height: 2.5
+    border-bottom: 1px solid #aaa
+    padding: 0 1em
+    .more
+      position: absolute
+      right: 1em
+      top: 0
+      padding: 0 1em
+      display: inline-block
+      line-height: 2.5
+  .content
+    padding: 1em 0 2em
+    margin: 0
+    .notification
+      padding: 0.5em 1em
+      border-bottom: 1px solid #ccc
+      line-height: 1.8
+    form
+      margin: 0 2em
+      textarea
+        margin-right: 1em
+        height: 40px
+    hr
+      margin: 1em 0
+  .close_30
+    position: absolute
+    left: -15px
+    bottom: -15px
+  .sample
+    padding: 1em
+    border: 1px solid #b9c750
+    +border-radius(3px)
+    +contrasted(#ebfae3)
+    text-align: center
+    +opacity(0.9)
+  .range
+    +opacity(0.5)
+
+#announce
+  position: fixed
+  top: 20%
+  right: 1em
+  +contrasted(#9C0000)
+  color: #fff
+  z-index: 99999999
+  padding: 1em
+  +border-radius(1px)
+  +box-shadow(1px 1px 1px #333)
+
+
+#user_new,
+  width: 50%
+

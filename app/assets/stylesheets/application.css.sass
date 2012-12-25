@@ -1,0 +1,84 @@
+//= require jquery.ui/jquery-ui-1.8.16.custom
+//= require jquery.ui_changes
+//= require colorbox/colorbox
+
+//= require elastic/elastic
+
+//= require formtastic
+
+//= require jgrowl/jquery.jgrowl
+
+//= require css3buttons
+
+//= require colorpicker/css/colorpicker
+
+////= require jquery.jscrollpane
+
+//= require jquery_custom_scroller/jquery.mCustomScrollbar
+
+//= require animate
+
+//// require jquery.hoverscroll/jquery.hoverscroll
+
+//= require formtastic_changes
+//= require colorbox_changes
+//= require ckeditor_changes
+
+//= require Elastislide/elastislide
+
+
+//= require_tree ./sprites/
+
+@import "import"
+@import "class"
+@import 'button'
+@import 'id'
+@import 'html'
+
+@import 'note'
+@import 'tag'
+
+$wrapper_width: 96%
+$left_width: 15%
+$right_width: 20%
+
+html
+  background: url(/assets/bg/bg39.jpg)
+//  body
+//    overflow: hidden
+//    width: 10000px
+//    height: 10000px
+//    &:hover
+//      cursor: pointer
+  a
+    color: inherit
+
+.simple_form
+  .text
+    height: 5em
+
+.button
+  margin: 1px!important
+
+.notice, .alert
+  text-align: center
+  line-height: 2
+.notice
+  background-color: #FFE9A8
+
+.alert
+  background-color: #FFCCD9
+
+.actions
+  text-align: right
+  input[type='submit']
+    padding: 2px 6px
+  padding-bottom: 3em
+
+.pagination
+  text-align: center
+  margin: 5em 2em
+  span
+    margin-right: 2px
+  .page
+    text-align: center

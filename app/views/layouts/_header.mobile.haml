@@ -1,0 +1,17 @@
+#navigator
+  #logo
+    = link_to 'NotiZ', '/'
+  - if current_user
+    #tags_bar
+      #tags= render "/tags/tags"
+  #nav
+    %ul
+      = link_to "　", 'http://' + subdomain + '.' + (development? ? 'airfont.com' : 'local.airfont.com')
+      - if current_user
+        %li
+          #notifications_count.num{:class => current_user.notifications.count == 0 ? 'disabled' : nil}= current_user.notifications.count
+        %li= link_to current_user.email.split('@')[0], 'javascript:void(0)', :id => 'current_user', "data-token" => current_user.token
+        %li= link_to "登出", destroy_user_session_path, :method => :delete
+      - else
+        %li= link_to "註冊", new_user_registration_path
+        %li= link_to "登入", new_user_session_path

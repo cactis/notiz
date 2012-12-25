@@ -1,0 +1,35 @@
+#user_config_form.option
+  .title
+    個人設定
+  .content
+    = form_for @account do |f|
+      = f.label :font_size, "字型: "
+      %span.num= current_user.font_size
+      px
+      = f.text_field :font_size, :type => 'range', :default => @account.font_size, :max => 30, :min => 10
+      %span.range (10-30)px
+      .sample{:style => "font-size: #{current_user.font_size}px"}
+        中文字型大小預覽
+      .default.footer{:style => 'font-size: 14px'}
+        (系統預設字型大小: 14px)
+  = link_to '#', '#', :class => 'close_30 icon icons_close'
+
+:coffeescript
+  $(document).ready ->
+    $('#user_font_size')
+      .change (e) ->
+        $size = $(e.target).val()
+        $.fn.log $size
+        $('#user_config_form .num').html($size)
+        $('#user_config_form .sample').css 'font-size', $size + 'px'
+
+      .mouseup (e)->
+        $size = $(e.target).val()
+        $('body').css 'font-size', $size + 'px'
+        $.ajax
+          url: '/accounts/' + $('#current_user').data 'token'
+          type: 'put'
+          data:
+            account:
+              font_size: $size + 'px'
+

@@ -1,0 +1,65 @@
+@import "compass/css3"
+@import "compass/css3/gradient"
+@import "compass/css3/border-radius"
+@import "compass/css3/box-shadow"
+@import "compass/css3/transform"
+@import 'compass/typography/links/link-colors'
+@import 'compass/utilities/color/contrast'
+
+
+@mixin contrasted_with_link($bg)
+  +contrasted($bg)
+
+@mixin nav
+  ul
+    margin: 0
+    padding: 0
+    li
+      display: inline-block
+      //border-right: 1px solid #ccc
+      &:last-child
+        border-right: none
+        padding-right: 0
+@mixin menus
+  a
+    text-decoration: none
+    font-size: 1.2em
+    padding: 0.2em 1em
+    display: block
+    &:hover
+      color: #fff
+      background-color: #002EB8
+      border-bottom: none
+    &.current
+      background-color: #CCDAFF//#002EB8
+      color: #efefef
+      color: #333
+  ol
+    margin: 0
+    padding: 2em 0 5em 0
+    background-color: #efefef
+    list-style-type: none
+    li
+      ol
+        padding: 0
+        li
+          padding-left: 2em
+
+@mixin horizan_list
+  li
+    display: inline-block
+    list-style-type: none
+    border-right: 1px solid #ccc
+    padding-right: 0.8em
+    margin-left: 0.8em
+    line-height: 0.2
+    &:last-child
+      border-right: none
+
+@mixin tools
+  line-height: 0.2
+  text-align: right
+  @include horizan_list
+.tools
+  @include tools
+

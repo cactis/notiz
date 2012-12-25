@@ -1,0 +1,17 @@
+%h1 Listing interactions
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @interactions.each do |interaction|
+    %tr
+      %td= link_to 'Show', interaction
+      %td= link_to 'Edit', edit_interaction_path(interaction)
+      %td= link_to 'Destroy', interaction, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Interaction', new_interaction_path

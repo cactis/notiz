@@ -1,0 +1,4 @@
+class WallpapersController < AssetsController
+
+end
+

@@ -1,0 +1,8 @@
+.content{:id => dom_id(@post, 'comments')}
+  = render @comments
+= form_for [@post, @post.comments.new], :remote => true do |f|
+  = f.text_area :comment, :required => 'required'
+  -# %span.memo (shift-Enter 換行)
+  = f.submit "留言", :disable_with => '留言中'
+.clearfix= link_to '', '#', :class => 'close_30 icon icons_close'
+

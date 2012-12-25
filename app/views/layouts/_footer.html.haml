@@ -1,0 +1,21 @@
+-# if supervisor?
+  #status
+    = User.all.map{|user| [user.email, user.tags.count, user.notes.count].join(', ')}.join(' | ')
+
+-# if supervisor? || development?
+  %ul
+    %li= open("|more /etc/issue").read().match(/Ubuntu \d*.\d*/)
+    %li= open("|uname -a").read()
+    %li= open("|uptime").read()
+    %li= open("|ruby -v").read()
+    %li= open("|passenger -v").read()
+    -# .split('"Phusion Passenger"')[0]
+    %li= "Rails: #{Rails::VERSION::STRING}"
+    %li= "mode: #{Rails.env}"
+    %li= "root: #{Rails.root.to_s}"
+    %li= request.symbolized_path_parameters.map{|k,v| "#{k}: #{v}"}*(', ')
+    %li= "language: #{language}"
+
+  %ol
+    = request.env.map{|item| content_tag :li, "<strong>#{item[0]}</strong>: #{item[1]}".html_safe}.join.html_safe
+

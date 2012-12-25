@@ -1,0 +1,9 @@
+#notifications.option
+  .title
+    通知
+  .content
+    - @notifications.each do |notify|
+      .notification
+        = notification_link(notify)
+  = link_to '#', '#', :class => 'close_30'
+

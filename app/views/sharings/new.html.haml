@@ -1,0 +1,10 @@
+%h1 指定分享對象
+= form_for @sharing do |f|
+  = f.hidden_field :thingable_type
+  = f.hidden_field :thingable_id
+  .row
+    = f.label :email
+    = f.email_field :email, {:required => 'required'}
+  .footer
+    = f.submit "送出"
+

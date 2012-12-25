@@ -1,0 +1,4 @@
+.attach{:id => dom_id(attach)}
+  .toolbar
+    = link_to '#', '#', :class => 'del'
+  = link_to 'file', attach_path(attach), :title => attach.file_name, :class => "download icon #{attach.iconfile}"

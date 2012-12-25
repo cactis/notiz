@@ -1,0 +1,5 @@
+.image{:id => dom_id(image)}
+  .toolbar
+    = link_to '#', '#', :class => 'del'
+  = link_to image_tag("/assets/#{image.iconfile}", :height => "32px"), picture_path(image, :size => :large), :title => image.file_name, :class => 'colorbox download'
+

@@ -1,0 +1,68 @@
+defaults: &defaults
+  app_name: "Notiz"
+  meta_keywords: ''
+  meta_description: ''
+  foot_html: "&copy; 2012."
+  domain: "[YOUR PRODUCTION DOMAIN]"
+  host: '[YOUR PRODUCTION DOMAIN]'
+  full_host: 'http://[YOUR PRODUCTION DOMAIN]'
+  switch_url: 'http://[YOUR DEVELOPMENT DOMAIN]'
+  reply_domain: "[YOUR PRODUCTION DOMAIN]"
+  production_url: 'http://[YOUR PRODUCTION DOMAIN]'
+  admin_emails: "[YOUR ADMIN EMAIL]"
+  google_analytics_key: ""
+  upload_url: "http://127.0.0.1:3000/uploads"
+  email_sender: 'no-reply@[YOUR PRODUCTION DOMAIN]'
+  email_reply_to: 'notification@[YOUR PRODUCTION DOMAIN]'
+
+  paperclip_hash_secret: '[YOUR PAPERCLIP HASH SECRET]'
+
+  aws_access_key_id: ''
+  aws_secret_access_key: ''
+
+  oauth_providers: 'google, facebook'#', github'
+
+
+  twitter_token: "[YOUR TWITTER TOKEN]"
+  twitter_secret: "[YOUR TWITTER SECRET]"
+
+  google_token_url: 'https://accounts.google.com/o/oauth2/token'
+  facebook_token_url: 'https://graph.facebook.com/oauth/access_token'
+
+  google_client_id: '[YOUR GOOGLE CLIENT ID]'
+  google_secret: '[YOUR GOOGLE CLIENT SECRET]'
+
+  google_grant_type: "refresh_token"
+  facebook_grant_type: "client_credentials"
+
+  google_scope: "userinfo.email,userinfo.profile,plus.me"
+  google_contacts_scope: "https://www.google.com/m8/feeds/contacts/default/full"
+  google_calendars_scope: "https://www.google.com/calendar/feeds/"
+  google_calendar_scope: "https://www.googleapis.com/auth/calendar"
+
+
+  facebook_client_id: "[YOUR FACEBOOK CLIENT ID]"
+  facebook_secret: "[YOUR FACEBOOK SECRET]"
+  facebook_scope: "email, user_about_me, user_activities, status_update, offline_access, read_friendlists, publish_stream"
+
+  approval_prompt: 'auto'
+  facebook_enable: true
+
+
+development:
+  <<: *defaults
+  app_name: "Notiz"
+  domain: '[YOUR DEVELOPMENT DOMAIN]'
+  host: '[YOUR DEVELOPMENT DOMAIN]'
+  full_host: 'http://[YOUR DEVELOPMENT DOMAIN]'
+  switch_url: 'http://[YOUR PRODUCTION DOMAIN]/welcome'
+  email_sender: 'no-reply@[YOUR DEVELOPMENT DOMAIN]'
+  email_reply_to: 'notification@[YOUR DEVELOPMENT DOMAIN]'
+
+  approval_prompt: 'auto'
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

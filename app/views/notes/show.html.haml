@@ -1,0 +1,5 @@
+%h1.subject
+  = raw auto_link(@note.subject, :sanitize => false)
+.body
+  = raw auto_link(@note.body, :sanitize => false)
+

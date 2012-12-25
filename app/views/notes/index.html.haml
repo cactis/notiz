@@ -1,0 +1,133 @@
+#notes.clearfix.notes{:class => @tag.mode}
+  #tag_tools
+    = link_to '#', '#', :class => 'config icon icons_config'
+    = render :partial => 'notes/toolbar'
+  #infos
+    %span.info
+      %span#num
+        = @notes.all.count
+      張便條紙
+    %span.info
+      共用: #{@tag.sharings.present? ? @tag.sharings.map{|s| content_tag(:span, s.email.split('@')[0], :title => s.email, :id => s.token, :class => 'sharing', "data-token" => s.token).html_safe}.join('').html_safe : '(無)'}, 擁有者: #{@tag.user == current_user ? "你" : @tag.user.email.split('@')[0]}
+  = render @notes
+
+
+-#pictures.es-carousel-wrapper
+  .es-carousel
+    %ul
+      = @tag.pictures.each do |picture|
+        %li= link_to image_tag(picture_path(picture, :size => 'small')), '#'
+
+
+#attaches
+  = render @tag.attaches
+
+#upload_images
+  .upload_images.icon.icons_photo{:title => '檔案上傳: 直接從檔案總管中拖取檔案放入此處。可同時多檔上傳。支援各種副檔名。圖檔以圖卡方式呈現。'}
+  .memo
+    檔案上傳
+#upload_wallpapers
+  .upload_wallpapers.icon.icons_wallpaper{:title => '更換桌布: 直接從檔案總管中拖取圖檔放入此處。多檔時以最後一檔為設定。目前支援 jpeg, jpg, png, gif 四種副檔名。'}
+  .memo
+    更換桌面
+
+:coffeescript
+  $(document).ready ->
+    $('#tag_tools .config').click (e) ->
+      $.ajax
+        url: '/tags/' + Notiz.tags.current.id + '/edit'
+        success: (data, textStatus, jqXHR) ->
+          $("#tag_config_form").detach()
+          $(data).hide().insertAfter($(e.target)).slideDown
+            duration: 1000
+            easing: 'easeOutBounce'
+      false
+
+    $ ->
+      faye = new Faye.Client("#{APP[:url]}:9292/api")
+      faye.subscribe "/announces", (data) ->
+        data = JSON.parse(unescapeHTML(data))
+        subject = data.announce.subject
+        if subject == 'close!'
+          $('#announce').fadeOut(1000)
+        else
+          $.fn.log subject, 'subject'
+          $('#announce').detach()
+          $data = $("<div id='announce'>系統通知: <br/>" + subject + "</div>")
+          $.fn.log $data, '#data'
+          $data.hide().prependTo($('body')).fadeIn(1000)
+          $.fn.log 'msg from announces channel'
+
+
+    $ ->
+      faye = new Faye.Client("#{APP[:url]}:9292/api")
+      faye.subscribe "/#{@tag.token}/notes", (data) ->
+        data = JSON.parse(unescapeHTML(data))
+        $.fn.log data
+
+        # 留言同步
+        $.fn.log $("#comment_" + data.id).length
+        if data.comment
+          obj = data
+          $target = $('#' + obj.dom_id)
+          $content = $target.find('.comments .content')
+          $.fn.log $content
+          $.fn.log $(obj.content)
+          $(obj.content).appendTo($content)
+          $content.scrollTo 'max'
+
+        # 便條紙同步
+        if data.note && (parseInt(data.note.options['timestamping']) != Notiz.posts.current.timestamping)
+          $.fn.log 'reload!'
+          obj = data.note
+          $.fn.log obj
+          $this = $("#note_" + obj.id)
+          if $this.hasClass('nnote')
+            $this.find('.subject').css 'background', obj.options.subject_background
+            $this.find('.body').css 'background', obj.options.body_background
+            $.fn.setColor($this)
+          $this.find('.subject').html obj.subject
+          $this.find('.body').html obj.body
+          $this.width obj.options.width
+          $this.height obj.options.height
+          $.fn.note_resize_body($this, '.body')
+          if !Notiz.tags.current.float()
+            $this.css 'left', obj.options.left
+            $this.css 'top', obj.options.top
+        # 圖卡同步
+        if data.clip
+          obj = data.clip
+          $this = $("#clip_" + obj.id)
+          $this.find('.colorbox').html obj.body
+          $this.width obj.options.width
+          $this.height obj.options.height
+          if !Notiz.tags.current.float()
+            $this.css 'left', obj.options.left
+            $this.css 'top', obj.options.top
+          $this.find('img').width obj.options.width
+          $this.find('img').height obj.options.height
+        $.fn.ajax_reset()
+
+
+    $('.attach .toolbar .del').unbind('click').click (e) ->
+      $attach = $(e.target).closest('.attach')
+      if confirm('刪除附件: ' + $attach.find('.download').attr('title') + '?')
+        $.fn.log 'del!' + $attach.id()
+        $.ajax
+          url: '/attaches/' + $attach.id()
+          type: 'delete'
+          success: ->
+            $.fn.log 'delete ok!'
+            $attach.fadeOut(300)
+      else
+        $.fn.log 'not del!'
+
+    $('.sharing').unbind('click').click (e) ->
+      if confirm("確定關閉這個分享？")
+        $.fn.log $(this).data 'token'
+        $.ajax
+          url: '/sharings/' + $(this).data('token')
+          type: 'delete'
+          success: ->
+            $(e.target).fadeOut(500)
+

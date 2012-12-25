@@ -1,0 +1,5 @@
+- @url = tag_notes_url(@commentable.tag, :anchor => dom_id(@commentable))
+%h1= @subject
+%h1 #{@comment.user.title} 說
+%p= link_to @comment.comment, @url
+

@@ -1,0 +1,38 @@
+- if @version
+  .version{:id => dom_id(@version, 'version')}
+    .memo
+      .close
+        = link_to 'x', '#', :class => 'close'
+      = @version_id * -1
+      = "/"
+      %span.num.count
+        = @note.versions.count
+    .version_body
+      = raw @version.reify.body
+- else
+  .version
+    .memo
+      .close
+        = link_to 'x', '#', :class => 'close'
+      0
+      = "/"
+      %span.num.count
+        = @note.versions.count
+    .version_body
+
+:coffeescript
+  $('.version .close').click ->
+    $(this).closest('.version').fadeOut(500).detach()
+  $('.version')
+    .click ->
+      false
+    .mouseenter ->
+      $(this).closest('.post').draggable('destroy')#.css('overflow', 'auto')
+      $(this).closest('.notes').sortable "option", "disabled", true
+      # $(this).resizable ->
+      #  alsoResize: '.version_body'
+      #  -# resize ->
+      #    $.fn.note_resize_body($(this), '.version_body')
+    .mouseleave ->
+      $(this).closest('.notes').sortable "option", "disabled", false
+

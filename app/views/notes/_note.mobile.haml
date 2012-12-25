@@ -1,0 +1,5 @@
+.note.list
+  .subject
+    = raw link_to(strip_tags(note.subject), tag_note_path(@tag.id, note.id))
+    .footer= about(note)
+
