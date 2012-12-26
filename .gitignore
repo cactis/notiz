@@ -8,7 +8,7 @@ capybara-*.html
 /log/*
 /tmp/*
 /db/*.sqlite3
-/public/system/*
+
 /coverage/
 /spec/tmp/*
 **.orig
@@ -17,6 +17,7 @@ pickle-email-*.html
 /config/database.yml
 /config/application.rb
 /config/application.yml
+/config/query_reviewer.yml
 /config/initializers/faye_token.rb
 /config/environments/development.rb
 /config/environments/production.rb
@@ -24,6 +25,7 @@ pickle-email-*.html
 /config/initializers/exception_notifier.rb
 /config/initializers/secret_token.rb
 
+/public/system/*
 /public/assets/system/*
 
 /public/uploads/**/*

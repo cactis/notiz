@@ -32,17 +32,9 @@
     更換桌面
 
 :coffeescript
-  $(document).ready ->
-    $('#tag_tools .config').click (e) ->
-      $.ajax
-        url: '/tags/' + Notiz.tags.current.id + '/edit'
-        success: (data, textStatus, jqXHR) ->
-          $("#tag_config_form").detach()
-          $(data).hide().insertAfter($(e.target)).slideDown
-            duration: 1000
-            easing: 'easeOutBounce'
-      false
 
+  $(document).ready ->
+    $.fn.tag_tools_config_bind_cick()
     $ ->
       faye = new Faye.Client("#{APP[:url]}:9292/api")
       faye.subscribe "/announces", (data) ->
@@ -130,4 +122,3 @@
           type: 'delete'
           success: ->
             $(e.target).fadeOut(500)
-

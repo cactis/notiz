@@ -1,7 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui-1.8.16.custom.min
-
+//= require jquery-ui-1.9.2/js/jquery-ui-1.9.2.custom.min
 
 //= require colorbox/jquery.colorbox-min
 //= require elastic/elastic
@@ -11,9 +10,9 @@
 
 //= require jgrowl/jquery.jgrowl_compressed
 
-//= require modernizr
+#//= _require modernizr
 
-//= require jquery.scrollTo-1.4.2-min
+#//= _require jquery.scrollTo-1.4.2-min
 
 //= require underscore-min
 
@@ -22,30 +21,28 @@
 //= require jquery.hoverIntent.minified
 
 
-//= require jquery.mousewheel
-//= require mwheelIntent
-//= require jquery_custom_scroller/jquery.mCustomScrollbar
-//= require jquery_custom_scroller/jquery.mousewheel.min
-//= require jquery_custom_scroller/jquery.easing.1.3
+#//= _require jquery.mousewheel
+#//= _require mwheelIntent
+#//= _require jquery_custom_scroller/jquery.mCustomScrollbar
+#//= _require jquery_custom_scroller/jquery.mousewheel.min
+#//= _require jquery_custom_scroller/jquery.easing.1.3
 
 //= require inflection-js/inflection
 
-//= require ember
-//= require emberjs
+//= require variables
 
-//= require jquery.jrumble.1.3.min
+#//= _require jquery.jrumble.1.3.min
 
-//= require jquery.quickflip.min
+#//= _require jquery.quickflip.min
 
+#//= _require html5slider
 
-//= require html5slider
-
-//= require jquery.masonry.min
+#//= _require jquery.masonry.min
 //= require modernizr.custom.71949
 
 //= require common
 
-#//// require Elastislide/jquery.elastislide
+#//= _require Elastislide/jquery.elastislide
 
 $(document).ready ->
   $('abbr.timeago').timeago()

@@ -7,7 +7,6 @@ $(document).ready ->
         tag:
           float: $(e.target).attr('id').split('_').pop()
       success: (data, textStatus, jqXHR) ->
-        $.fn.log 'radio change'
         $.ajax
           url: '/tags/' + Notiz.tags.current.id + '/notes'
           type: 'get'
@@ -19,7 +18,6 @@ $(document).ready ->
   $('#send_sharing_mail').click (e) ->
     $.fn.log $('#tag_sharing_mail_lists').val(), "$('#tag_sharing_mail_lists').val()"
     $mail_lists = $('#tag_sharing_mail_lists').val()
-    $.fn.log $mail_lists
     return unless $mail_lists
     $.ajax
       url: '/sharings/'
@@ -33,15 +31,10 @@ $(document).ready ->
 
   $('#tag_name')
     .keyup (e) ->
-      $.fn.log 'tag_name keyup'
-      $.fn.log $(e.target).val()
-      $.fn.log Notiz.tags.current.id
       $('#tag_' + Notiz.tags.current.id).html($(e.target).val())
 
   $('#tag_config_form :text').blur (e) ->
     $this = $(e.target)
-    $.fn.log $this.val(), 'this val'
-    $.fn.log $this.data('old'), 'this data'
     if $this.val() == $this.data('old')
       return
     else
@@ -59,7 +52,6 @@ $(document).ready ->
     $.ajax
       url: '/tags/' + Notiz.tags.current.id
       type: 'PUT'
-      # contentType: 'josn'
       data:
         tag:
           name: ''
@@ -81,4 +73,3 @@ $(document).ready ->
         success:
           $('html').css 'background', ''
       false
-

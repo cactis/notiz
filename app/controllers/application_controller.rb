@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
     flash.discard
   end
 
-  def supervisor?; current_user && current_user == User.first.order('id asc'); end; helper_method :supervisor?
+  def supervisor?; current_user && current_user == User.order('id asc').first; end; helper_method :supervisor?
   def subdomain; request.env["HTTP_HOST"].split('.')[0]; end; helper_method :subdomain
 
   before_filter :every_request

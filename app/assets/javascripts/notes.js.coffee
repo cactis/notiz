@@ -11,41 +11,12 @@ offset_x = 0
 offset_y = 0
 
 $(document).ready ->
-  # $.fn.initial_notes '.notes .post'
   $.fn.enableSortable($('.notes.float'))
-
-#  $('body').draggable ->
-#    delay: 1000
-
-# 桌面捲動
-#  $('body')
-#    .bind 'mousemove', (evt) ->
-#      $.fn.clearSelection()
-#      if mouseDown
-#        offset_x = evt.pageX - x
-#        offset_y = evt.pageY - y
-#        if offset_x > min || offset_x < -1 * min || offset_y > min || offset_y < -1 * min
-#          document.body.scrollLeft = scrollLeft - offset_x
-#          document.body.scrollTop = scrollTop - offset_y
-#    .bind 'mousedown', (evt) ->
-#      $.fn.clearSelection()
-#      scrollLeft = document.body.scrollLeft
-#      scrollTop = document.body.scrollTop
-#      x = evt.pageX
-#      y = evt.pageY
-#      mouseDown = true
-#      $.fn.log mouseDown
-#    .bind 'mouseup', ->
-#      $.fn.clearSelection()
-#      mouseDown = false
-#      x = 0
-#      y = 0
 
 $.ajaxSetup
   success: ->
     num = $('.post').length
     $('#num').html(num)
-    # $.fn.ajax_reset()
 
 $.fn.add_post = (type, body) ->
   data = {}
@@ -74,9 +45,7 @@ $.fn.add_post = (type, body) ->
           type: 'PUT'
           data: data
         success: ->
-          # $.fn.log '___________________________'
           if elm.hasClass('clip')
-            # elm.find('img').css 'width', elm.css('width')
             elm.css 'width', elm.find('img').css('width')
             elm.css 'height', elm.find('img').css('height')
             $.fn.enable_resizable elm
@@ -92,7 +61,6 @@ $.fn.add_post = (type, body) ->
       if 39 < e.keyCode < 112 || e.keyCode == 8 || e.keyCode == 13 || e.keyCode == 32 || e.keyCode == 46
         $('.dirty').addClass('true').data 'dirty-id', $(selector).id()
         Notiz.posts.current.area = if $(this).hasClass 'subject' then 'subject' else 'body'
-        # $.fn.log Notiz.posts.current.area
       # ctrl-s or F2
       if ($('html').hasClass('ctrl') && e.keyCode == 83) || e.keyCode == 113
         $(e.target).trigger 'change'
@@ -100,13 +68,11 @@ $.fn.add_post = (type, body) ->
 
     $post
       .unbind('click').click (e) ->
-        # $.fn.log Notiz.posts.current.id, 'Notiz.posts.current.id'
         Notiz.posts.current.id = $(e.target).closest('.post').id()
       .find('.config').click (e) ->
         $.ajax
           url: '/tags/' + Notiz.tags.current.id + '/posts/' + $post.id() + '/edit'
           success: (data, textStatus, jqXHR) ->
-            # $.fn.log 'success'
             $post.find('.option .content').html(data)
             $post.find('.option').slideDown
               duration: 500
@@ -160,12 +126,14 @@ $.fn.add_post = (type, body) ->
               type: 'PUT'
               data: data
       .click ->
+        $.fn.log '第一下點擊：貼紙取得焦點'
         $this = $(this)
         Notiz.posts.setTop $this
         if $this.hasClass('dragging')
           $this.removeClass('dragging')
         else
-          $this.draggable('destroy')
+          $this.filter(':ui-draggable').draggable('destroy')
+        return false
 
     elm = $(selector)
     $.fn.note_resize_body(elm, '.body')
@@ -178,23 +146,21 @@ $.fn.add_post = (type, body) ->
         $(this).find('.subject, .body, img').css('cursor', 'move')
       .mouseleave ->
         $(this).find('.toolbar').removeClass('visible')
-        # $(this).find('.version').fadeOut(500).detach()
-        # $(this).find('.subject, .body').css('cursor', 'move')
 
       # 進入編輯模式，同時駟動先前的編輯儲存
       .click ->
+        $.fn.log '第二下點擊：進入編輯模式，同時駟動先前的編輯儲存'
         $.fn.saveNote()
         if $(this).hasClass('dragging')
           $(this).removeClass('dragging')
         else
-          $('.notes').sortable('destroy')
+          $('.notes').filter(':ui-sortable').sortable('destroy')
 
       .find('.subject, .body').click (e) ->
         if $(e.target).hasClass('subject')
           Notiz.posts.current.area = 'subject'
         else
           Notiz.posts.current.area = 'body'
-        # $.fn.log Notiz.posts.current.area
         # 移入 Notiz 物件
         # $('[contenteditable]').attr 'contenteditable', false
         # $(this).attr('contenteditable', true).css 'cursor', 'text'
@@ -214,11 +180,6 @@ $.fn.add_post = (type, body) ->
     $.fn.note_contenteditable(elm)
     $.fn.enable_resizable(elm)
 
-    # if elm.hasClass('note')
-    #  elm.find('.background_picker').click (e) ->
-    #    $.fn.note_color_picker(elm, Notiz.posts.current.area)
-
-
   $.fn.enableSortable = (elm) ->
     elm.sortable
       items: '.post'
@@ -227,11 +188,9 @@ $.fn.add_post = (type, body) ->
       start: (e, ui) ->
         $(e.target).addClass('dragging')
       stop: (e, ui) ->
-        # $.fn.log 'sort stop'
         $(e.target).removeClass('dragging')
       update: (e, ui) ->
         Notiz.posts.setTop $(e.target)
-        # $.fn.log 'sort changed'
 
 
   # 針對 note 及 clip 的不同調整大小

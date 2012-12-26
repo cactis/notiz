@@ -83,6 +83,8 @@ gem 'paper_trail', '~> 2'
 
 gem 'oink'
 
+# gem "query_reviewer", :git => "git://github.com/nesquena/query_reviewer.git"
+
 # 讓 js 能取得 rails 的變數
 gem 'gon'
 
@@ -97,6 +99,8 @@ group :development do
   gem 'sprite-factory'
 
   gem 'quiet_assets'
+
+  # gem 'meta_request', '0.1.3'
 
   gem "better_errors"
   gem "binding_of_caller"
