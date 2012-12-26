@@ -103,7 +103,7 @@ group :development do
 
   gem 'quiet_assets'
 
-  # gem 'meta_request', '0.1.3'
+  gem 'meta_request', '0.2.0'
 
   gem "better_errors"
   gem "binding_of_caller"

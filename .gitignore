@@ -31,5 +31,7 @@ pickle-email-*.html
 /public/uploads/**/*
 /public/google*.html
 
+/app/views/layouts/_google_analytics.html
+
 
 *.*~

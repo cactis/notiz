@@ -11,4 +11,4 @@
   %body
     #header= render :partial => '/layouts/header'
     #middle= yield(:layout)
-
+    = render :partial => '/layouts/google_analytics' if Rails.env.production?   

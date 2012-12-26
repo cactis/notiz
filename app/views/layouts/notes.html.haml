@@ -42,3 +42,4 @@
         = yield
     #footer.clearfix
       = render :partial => "/layouts/footer"
+    = render :partial => '/layouts/google_analytics' if Rails.env.production?         
