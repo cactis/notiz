@@ -12,7 +12,7 @@
 
 #//= _require modernizr
 
-#//= _require jquery.scrollTo-1.4.2-min
+//= require jquery.scrollTo-1.4.2-min
 
 //= require underscore-min
 

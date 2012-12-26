@@ -97,8 +97,8 @@ $.fn.add_post = (type, body) ->
                 easing: 'easeOutBounce'
             $post.find('textarea').focus()
             $post.find('.comments').mousedown ->
-              $post.draggable('destroy')
-              $('#notes').sortable('destroy')
+              $post.filter(':ui-draggable').draggable('destroy')
+              $('#notes').filter(':ui-sortable').sortable('destroy')
         false
 
     # 設定前景色
@@ -133,7 +133,6 @@ $.fn.add_post = (type, body) ->
           $this.removeClass('dragging')
         else
           $this.filter(':ui-draggable').draggable('destroy')
-        return false
 
     elm = $(selector)
     $.fn.note_resize_body(elm, '.body')

@@ -27,7 +27,6 @@ gem "title_helper", "~> 0.4.0"
 # gem 'expansion'
 # gem 'datts_right'
 
-gem 'dalli'
 
 gem 'sanitize'
 
@@ -87,6 +86,10 @@ gem 'oink'
 
 # 讓 js 能取得 rails 的變數
 gem 'gon'
+
+gem 'dalli'
+
+gem 'cache_digests'
 
 group :development do
   gem 'rails-footnotes', '>= 3.7.5.rc4'

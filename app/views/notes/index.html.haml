@@ -1,3 +1,5 @@
+= content_for :title do
+  = @tag.name
 #notes.clearfix.notes{:class => @tag.mode}
   #tag_tools
     = link_to '#', '#', :class => 'config icon icons_config'
@@ -32,7 +34,6 @@
     更換桌面
 
 :coffeescript
-
   $(document).ready ->
     $.fn.tag_tools_config_bind_cick()
     $ ->
