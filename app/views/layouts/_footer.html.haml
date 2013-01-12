@@ -2,7 +2,7 @@
   #status
     = User.all.map{|user| [user.email, user.tags.count, user.notes.count].join(', ')}.join(' | ')
 
--# if supervisor? || development?
+-if supervisor? || development?
   %ul
     %li= open("|more /etc/issue").read().match(/Ubuntu \d*.\d*/)
     %li= open("|uname -a").read()
@@ -16,6 +16,5 @@
     %li= request.symbolized_path_parameters.map{|k,v| "#{k}: #{v}"}*(', ')
     %li= "language: #{language}"
 
-  %ol
+  -#%ol
     = request.env.map{|item| content_tag :li, "<strong>#{item[0]}</strong>: #{item[1]}".html_safe}.join.html_safe
-
