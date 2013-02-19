@@ -5,7 +5,7 @@ class Tag < Tree
   custom_options = [
     ['notes_list', 'String', '99999'],
     ['float', 'Boolean', true],
-    ['background', 'String', '/assets/bg/bg39.jpg'],
+    ['background', 'String', '/assets/bg/bg48.png'],
     ['background_color', 'String', '#ff0000'],
     ['sharing_info', 'String', 'Hi, 我有一個桌面要分享給你~'],
     ['sharing_mail_lists', 'String', '']
@@ -51,4 +51,3 @@ class Tag < Tree
     float ? 'float' : 'absolute'
   end
 end
-

@@ -6,9 +6,8 @@
 
 //= require formtastic
 
-//= require jgrowl/jquery.jgrowl
+//// require jgrowl/jquery.jgrowl
 
-//= require css3buttons
 
 //= require colorpicker/css/colorpicker
 
@@ -26,7 +25,6 @@
 
 //= require Elastislide/elastislide
 
-
 //= require_tree ./sprites/
 
 @import "import"
@@ -43,7 +41,7 @@ $left_width: 15%
 $right_width: 20%
 
 html
-  background: url(/assets/bg/bg39.jpg)
+  background: url(/assets/bg/bg48.png)
 //  body
 //    overflow: hidden
 //    width: 10000px
@@ -82,3 +80,20 @@ html
     margin-right: 2px
   .page
     text-align: center
+
+#notice
+  display: none
+  font-size: 0.9em
+  position: absolute
+  right: 1em
+  background-color: #000
+  color: #fff
+  padding: 0.5em 1em
+  z-index: 1000000
+  opacity: 0.9
+  -moz-border-radius: 3px
+  -webkit-border-radius: 3px
+  -o-border-radius: 3px
+  -ms-border-radius: 3px
+  -khtml-border-radius: 3px
+  border-radius: 3px  

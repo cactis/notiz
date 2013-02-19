@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
-# gem 'rails', '3.1.3'
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 
 gem 'mysql2'
 
@@ -12,21 +11,10 @@ gem 'mysql2'
   gem 'compass', '0.12.alpha.2'
 # end
 
-gem 'jquery-rails'
+gem 'jquery-rails'#, '2.1.4'
+gem 'jquery-ui-rails'
 
 gem "title_helper", "~> 0.4.0"
-
-# gem 'faye', '0.8.1'
-
-# gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
-#gem 'less-rails'
-#gem 'less-rails-bootstrap'
-
-# gem 'dynamic_attributes'
-# gem 'metafy'
-# gem 'expansion'
-# gem 'datts_right'
-
 
 gem 'sanitize'
 
@@ -35,7 +23,6 @@ gem 'mini_magick'
 # gem 'icalendar'
 
 # gem 'compass'
-gem 'haml'
 
 # gem "jquery_mobile-rails"
 
@@ -44,9 +31,9 @@ gem 'haml'
 ##gem 'gdbm'
 #gem 'memcached'
 
-gem 'css3buttons'
+# gem 'css3buttons'
 
-gem 'coffee-filter'
+
 
 gem 'kaminari'
 
@@ -66,7 +53,7 @@ gem 'awesome_nested_set'
 
 # gem 'haml-edge', :require => 'haml'# , '~> 3.1.49',
 
-gem 'rake'
+# gem 'rake'
 
 gem 'settingslogic'
 
@@ -89,15 +76,23 @@ gem 'gon'
 
 gem 'dalli'
 
-gem 'cache_digests'
+# gem 'cache_digests'
+
+
+# gem 'haml'
+gem 'haml'#, '3.1' #, '~> 4.0.0.rc.1'
+# gem 'coffee-filter'
+
+gem 'faye', '0.8.1'
+gem 'thin'
 
 group :development do
   gem 'rails-footnotes', '>= 3.7.5.rc4'
-  gem 'haml-rails'
+  # gem 'haml-rails'
+  gem 'haml-rails'#, github: 'norman/haml-rails', branch: 'change_deps_for_haml_4'
   gem "rspec", "~> 2.0"
   gem "rspec-rails", "~> 2.0"
 
-  gem 'rmagick'
   gem 'chunky_png'
   gem 'sprite-factory'
 

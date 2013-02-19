@@ -16,7 +16,7 @@ $(document).ready ->
             $.fn.initial_notes '#notes .post'
 
   $('#send_sharing_mail').click (e) ->
-    $.fn.log $('#tag_sharing_mail_lists').val(), "$('#tag_sharing_mail_lists').val()"
+    # $.fn.log $('#tag_sharing_mail_lists').val(), "$('#tag_sharing_mail_lists').val()"
     $mail_lists = $('#tag_sharing_mail_lists').val()
     return unless $mail_lists
     $.ajax

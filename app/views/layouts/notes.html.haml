@@ -8,7 +8,7 @@
       = content_for(:title)
       \ -
       = $APPNAME
-
+    = csrf_meta_tag
     = stylesheet_link_tag "application"
     - if File.exists?("#{Rails.root}/app/assets/stylesheets/#{controller_name}.css.sass")
       = stylesheet_link_tag controller_name
@@ -21,7 +21,7 @@
     - if File.exists?("#{Rails.root}/app/assets/javascripts/#{controller_name}_#{action_name}.js.coffee")
       = javascript_include_tag "#{controller_name}_#{action_name}"
 
-    = javascript_include_tag "#{APP[:url]}:9292/api/faye.js"
+    = javascript_include_tag "#{APP[:url]}:9294/api/faye.js"
 
 
     / [if lt IE 8]
@@ -33,11 +33,11 @@
 
     = include_gon
 
-    = csrf_meta_tag
   %body{:style => current_user.styles}
     #header
       = render :partial => "/layouts/header"
     #wrapper.clearfix
+      #notice
       #content.clearfix
         = yield
     #footer.clearfix

@@ -1,14 +1,16 @@
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
-//= require jquery-ui-1.9.2/js/jquery-ui-1.9.2.custom.min
+
+//= require jquery-migrate-1.1.1
 
 //= require colorbox/jquery.colorbox-min
 //= require elastic/elastic
 
-//= require colorpicker/js/colorpicker
+#// require colorpicker/js/colorpicker
 //= require ColorJizz
 
-//= require jgrowl/jquery.jgrowl_compressed
+#// require jgrowl/jquery.jgrowl
 
 #//= _require modernizr
 
@@ -16,9 +18,12 @@
 
 //= require underscore-min
 
-//= require jquery.tools.min
+
+//= require jquery.tools.min.1.2.7
 
 //= require jquery.hoverIntent.minified
+
+
 
 
 #//= _require jquery.mousewheel
@@ -38,7 +43,8 @@
 #//= _require html5slider
 
 #//= _require jquery.masonry.min
-//= require modernizr.custom.71949
+# // require modernizr.custom.71949
+//= require modernizr.custom.2.6.2
 
 //= require common
 
@@ -77,7 +83,7 @@ $(document).ready ->
     $('.tag .toolbar').removeClass('visible')
 
 
-  $('.colorbox').colorbox({maxWidth: '85%', maxHeight: '85%', slideshow: true, slideshowSpeed: 10000})
+
   $.fn.set_external_link()
 
   # $.fn.enable_note($('.note'))
@@ -124,11 +130,27 @@ $(document).ready ->
         $('.option').detach()
 ) jQuery
 
+$.delay = (->
+  timer = 0
+  (callback, ms) ->
+    clearTimeout timer
+    timer = setTimeout(callback, ms)
+)()
+
+$.jGrowl = (msg) ->
+  $notice = $('#notice')
+  $notice.html(msg).fadeIn(300)
+  $.delay ->
+    $notice.fadeOut(300)
+  , 3000
+
 
 jQuery.ajaxSetup
-  beforeSend: ->
+  beforeSend: (xhr) ->
     $("body").prepend("<div id='loader'></div>")
     $("body").css "cursor", "progress"
+    xhr.setRequestHeader "X-CSRF-Token", $("meta[name=\"csrf-token\"]").attr("content")
+
     # $.fn.log 'ajax callback: beforesend'
 
   complete: (jqXHR, textStatus) ->
@@ -155,8 +177,6 @@ jQuery.ajaxSetup
     $('.colorbox').colorbox()
     $('abbr.timeago').timeago()
     if jqXHR && flash = jqXHR.getResponseHeader 'x-flash'
-      # $.fn.log flash
-      #$.fn.log unescape(decodeURI(flash))
       $.jGrowl unescape(decodeURI(flash))
 
     # 設定所有 .close_30 的點擊行為

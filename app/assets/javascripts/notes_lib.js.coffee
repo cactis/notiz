@@ -1,3 +1,6 @@
+//= require colorpicker/js/colorpicker
+//= require jquery.ui.all
+
 $.fn.floatStatus = ->
   Notiz.tags.current.float()
 

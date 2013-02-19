@@ -6,6 +6,7 @@
     %title
       = title :site_name => $APPNAME
 
+    = csrf_meta_tag
     = stylesheet_link_tag "application"
     - if File.exists?("#{Rails.root}/app/assets/stylesheets/#{controller_name}.css.sass")
       = stylesheet_link_tag controller_name
@@ -24,12 +25,12 @@
     %link{:href => '//fonts.googleapis.com/css?family=Adamina|Andika|Antic|Architects+Daughter|Cabin|Cabin+Sketch:700|Comfortaa|Coustard|Delius+Swash+Caps|Didact+Gothic|Gloria+Hallelujah|Hammersmith+One|Josefin+Sans:400,700|Julee|Michroma|Monoton|Montez|Numans|Nunito|Patrick+Hand|Philosopher|Play|Prociono|Rosario|Schoolbell|Short+Stack|Snippet|Sorts+Mill+Goudy|Ubuntu|Varela+Round', :rel => 'stylesheet', :type => 'text/css'}
     %link{:href => '/assets/favorite-icon.png', :rel => 'shortcut icon'}
 
-    = csrf_meta_tag
 
   %body{:style => current_user ? current_user.styles : ''}
     #header
       = render :partial => "/layouts/header"
     #wrapper.clearfix
+      #notice
       #content.clearfix
         = yield
     #footer.clearfix

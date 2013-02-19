@@ -2,7 +2,7 @@ $uploaded = ''
 $uploadedType = ''
 
 $(document).ready ->
-  $.fn.log 'initial uploading'
+  #  $.fn.log 'initial uploading'
   initialUploader("upload_wallpapers", 'Wallpaper')
   initialUploader("upload_images", 'Image')
 

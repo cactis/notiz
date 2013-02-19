@@ -1,5 +1,6 @@
-gem 'faye', '0.8.1'
+#gem 'faye', '0.8.1'
 require 'faye'
+
 Faye::WebSocket.load_adapter 'thin'
 require File.expand_path('../config/initializers/faye_token.rb', __FILE__)
 
@@ -15,5 +16,6 @@ class ServerAuth
 end
 
 faye_server = Faye::RackAdapter.new(:mount => '/api', :timeout => 45)
+faye_server.listen(9294)
 faye_server.add_extension(ServerAuth.new)
 run faye_server

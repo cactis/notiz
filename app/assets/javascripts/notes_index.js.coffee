@@ -1,7 +1,8 @@
+//= require colorbox/jquery.colorbox-min
 //= require file_upload
 
 $(document).ready ->
-
+  $('.colorbox').colorbox({maxWidth: '85%', maxHeight: '85%', slideshow: true, slideshowSpeed: 10000})
   # 由於有多次載入的問題，桌面物件的基本設定要在這裡完成
   $.fn.pageSetup()
   $.fn.next_page(2)

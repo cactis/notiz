@@ -21,6 +21,8 @@ module ApplicationHelper
     Net::HTTP.post_form(uri, :message => message.to_json)
   end
 
+
+
   def link_to_oauth_login(provider)
     # "<a href='#{user_oauth_authorize_url(:facebook)}' class='oauth_login Facebook'>以facebook登入</a>".html_safe
     case provider
@@ -80,4 +82,3 @@ module ApplicationHelper
   #    CGI.unescapeHTML(CGI.unescapeHTML(super))
   #  end
 end
-
